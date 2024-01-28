@@ -10,13 +10,16 @@ def two_crystal_balls(breaks: List[bool]) -> int:
     jump_amount = math.floor(math.sqrt(len(breaks)))
     i = jump_amount
 
+    # jump root N times, check for breaks
     while i < len(breaks):
         if breaks[i]:
             break
         i += jump_amount
 
+    # go back root N once you do find a break
     i -= jump_amount
 
+    # step up to root N times to find where the break occurs
     for j in range(jump_amount + 1):
         if i < len(breaks) and breaks[i]:
             return i
